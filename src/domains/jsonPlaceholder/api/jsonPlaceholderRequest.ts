@@ -1,9 +1,9 @@
 import { createRequest, CreateRequestFn, joinUrl } from "@mukhindev/request";
 import { JSON_PLACEHOLDER_API_HOST } from "../constants";
 
-export const createJsonPlaceholderRequest: CreateRequestFn = (getOptions) => {
+export const createJsonPlaceholderRequest: CreateRequestFn = (forwardOptions) => {
   return createRequest(async (options) => {
-    const { url, ...other } = await getOptions(options);
+    const { url, ...other } = await forwardOptions(options);
 
     // You can execute an async process before the request. For example, check and refresh token
     console.log("Process before request start");
