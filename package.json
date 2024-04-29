@@ -1,0 +1,19 @@
+{
+  "name": "@mukhindev/request-demo",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "link": "npm link @mukhindev/request"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2",
+    "vite": "^5.2.0"
+  },
+  "dependencies": {
+    "@mukhindev/request": "^1.0.0"
+  }
+}
