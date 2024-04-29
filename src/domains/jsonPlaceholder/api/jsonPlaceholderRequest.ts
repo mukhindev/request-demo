@@ -1,14 +1,24 @@
 import { createRequest, CreateRequestFn, joinUrl } from "@mukhindev/request";
 import { JSON_PLACEHOLDER_API_HOST } from "../constants";
 
-export const createJsonPlaceholderRequest: CreateRequestFn = (forwardOptions) => {
+type ExtendedJsonPlaceholderOptions = {
+  // Custom special option for all created requests by createJsonPlaceholderRequest
+  delay: number;
+};
+
+export const createJsonPlaceholderRequest: CreateRequestFn<
+  ExtendedJsonPlaceholderOptions
+> = (forwardOptions) => {
   return createRequest(async (options) => {
-    const { url, ...other } = await forwardOptions(options);
+    const { delay = 0, url, ...other } = await forwardOptions(options);
 
     // You can execute an async process before the request. For example, check and refresh token
-    console.log("Process before request start");
-    await delay(1500);
-    console.log("Process before request end");
+    // Delay for async process example
+    if (delay > 0) {
+      console.log("Process before request start");
+      await new Promise((resolve) => setTimeout(resolve, delay));
+      console.log("Process before request end");
+    }
 
     return {
       // join "https://jsonplaceholder.typicode.com" + pathname
@@ -17,7 +27,3 @@ export const createJsonPlaceholderRequest: CreateRequestFn = (forwardOptions) =>
     };
   });
 };
-
-function delay(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}

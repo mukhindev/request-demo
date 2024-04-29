@@ -14,6 +14,6 @@
     "vite": "^5.2.0"
   },
   "dependencies": {
-    "@mukhindev/request": "^1.0.1"
+    "@mukhindev/request": "^1.0.2"
   }
 }
